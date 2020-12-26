@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using eShop_Backend.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Models.Requests;
+using Products.API.Repositories;
 
-namespace eShop_Backend.Controllers
+namespace Products.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

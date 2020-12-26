@@ -1,13 +1,14 @@
-﻿using System;
+﻿using eShop_Core.Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace Products.API.Models
+namespace Users.API.Model.Responses
 {
-    public partial class User
+    public class UserResponse
     {
-        public User()
+        public UserResponse()
         {
             Addresses = new HashSet<Address>();
             Orders = new HashSet<Order>();
@@ -18,11 +19,7 @@ namespace Products.API.Models
         public string Fname { get; set; }
         public string Lname { get; set; }
         public int? Age { get; set; }
-        public int? Role { get; set; }
         public string PhotoUrl { get; set; }
-        public string Type { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
 
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

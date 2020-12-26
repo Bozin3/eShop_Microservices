@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Products.API.Models
+namespace eShop_Core.Entities
 {
     public partial class Address
     {

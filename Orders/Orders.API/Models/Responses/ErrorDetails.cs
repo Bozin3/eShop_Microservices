@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Products.API.Models.Responses
+namespace Orders.API.Models.Responses
 {
     public class ErrorDetails
     {

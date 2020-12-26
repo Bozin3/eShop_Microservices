@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Products.API.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Users.API.Models.Responses;
 
-namespace Products.API.Middlewares
+namespace Users.API.Middlewares
 {
     public class ExceptionMiddleware
     {

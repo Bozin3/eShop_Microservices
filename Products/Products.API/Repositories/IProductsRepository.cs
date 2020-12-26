@@ -1,10 +1,10 @@
-﻿using Products.API.Models;
+﻿using eShop_Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eShop_Backend.Repositories
+namespace Products.API.Repositories
 {
     public interface IProductsRepository
     {

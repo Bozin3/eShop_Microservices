@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eShop_Core;
+using eShop_Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using Products.API.Models;
 
-namespace eShop_Backend.Repositories
+namespace Products.API.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {

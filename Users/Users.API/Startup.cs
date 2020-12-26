@@ -1,15 +1,21 @@
 using eShop_Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Products.API.Middlewares;
-using Products.API.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Users.API.Middlewares;
+using Users.API.Repositories;
 
-namespace Products.API
+namespace Users.API
 {
     public class Startup
     {
@@ -29,9 +35,7 @@ namespace Products.API
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddControllers();
-
-            services.AddScoped<IProductsRepository, ProductsRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

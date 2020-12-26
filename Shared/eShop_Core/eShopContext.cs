@@ -1,10 +1,9 @@
 ﻿using System;
+using eShop_Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
-
-namespace Products.API.Models
+namespace eShop_Core
 {
     public partial class eShopContext : DbContext
     {
@@ -23,14 +22,6 @@ namespace Products.API.Models
         public virtual DbSet<OrdersDetail> OrdersDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BAUU60D;Database=eShop;Trusted_Connection=True;");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

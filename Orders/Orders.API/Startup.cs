@@ -6,10 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
-using Products.API.Middlewares;
-using Products.API.Repositories;
+using Orders.API.Middlewares;
+using Orders.API.Repositories;
 
-namespace Products.API
+namespace Orders.API
 {
     public class Startup
     {
@@ -30,8 +30,7 @@ namespace Products.API
             });
             services.AddControllers();
 
-            services.AddScoped<IProductsRepository, ProductsRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrdersRepository, OrdersRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
