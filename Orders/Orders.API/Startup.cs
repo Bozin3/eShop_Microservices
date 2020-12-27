@@ -19,6 +19,7 @@ namespace Orders.API
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -30,6 +31,14 @@ namespace Orders.API
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddJwt(Configuration["TokenKey"]);
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod();
+                                  });
+            });
             services.AddControllers();
 
             services.AddScoped<IOrdersRepository, OrdersRepository>();
@@ -44,6 +53,8 @@ namespace Orders.API
             }
 
             app.UseMiddleware<ExceptionMiddleware>();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseRouting();
 
