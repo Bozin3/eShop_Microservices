@@ -1,8 +1,4 @@
 ﻿using eShop_Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Users.API.Model.Requests;
 using Users.API.Model.Responses;
 
@@ -34,6 +30,18 @@ namespace Users.API.Utils
                 Fname = updateUserRequest.Fname,
                 Lname = updateUserRequest.Lname,
                 PhotoUrl = updateUserRequest.PhotoUrl
+            };
+        }
+
+        public static User ToUser(this RegisterRequest updateUserRequest)
+        {
+            return new User
+            {
+
+                Email = updateUserRequest.Email,
+                Fname = updateUserRequest.Fname,
+                Lname = updateUserRequest.Lname,
+                Age = updateUserRequest.Age
             };
         }
     }

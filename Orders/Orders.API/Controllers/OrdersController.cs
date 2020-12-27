@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using eShop_Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Orders.API.Repositories;
 
 namespace Orders.API.Controllers
 {
 
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase

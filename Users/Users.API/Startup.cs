@@ -1,19 +1,15 @@
 using eShop_Core;
+using Extentions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Users.API.Middlewares;
 using Users.API.Repositories;
+using Users.API.Utils;
 
 namespace Users.API
 {
@@ -34,8 +30,12 @@ namespace Users.API
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+            services.AddJwt(Configuration["TokenKey"]);
             services.AddControllers();
+
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPasswordHandler, PasswordHandler>();
+            services.AddScoped<IAuthTokenHandler, AuthTokenHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +49,8 @@ namespace Users.API
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

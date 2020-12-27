@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\eShop_Core\eShop_Core.csproj" />
+    <ProjectReference Include="..\..\Shared\Extentions\Extentions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

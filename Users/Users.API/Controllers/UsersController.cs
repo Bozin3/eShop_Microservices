@@ -7,8 +7,9 @@ using eShop_Core.Entities;
 using Users.API.Model.Responses;
 using Users.API.Model.Requests;
 using Users.API.Utils;
+using Microsoft.AspNetCore.Authorization;
 
-namespace eShop_Backend.Controllers
+namespace Users.API.Controllers
 {
 
     [Route("api/[controller]")]
@@ -45,6 +46,7 @@ namespace eShop_Backend.Controllers
         }
 
         // PUT: api/Users/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, [FromBody] UpdateUserRequest updateUserRequest)
         {
@@ -63,16 +65,8 @@ namespace eShop_Backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
-        [HttpPost]
-        public async Task<ActionResult<UserResponse>> PostUser(User user)
-        {
-            await userRepository.AddUser(user);
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }
-
         // DELETE: api/Users/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<UserResponse>> DeleteUser(int id)
         {
